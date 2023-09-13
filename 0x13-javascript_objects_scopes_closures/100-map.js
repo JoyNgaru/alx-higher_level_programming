@@ -1,5 +1,8 @@
 #!/usr/bin/node
-/**
- * An arbitrary array of numbers.
- */
-exports.list = [1, 2, 3, 4, 5];
+const list = require('./100-data').list;
+
+console.log(list);
+const newList = list.map(function (x, idx) {
+  return (x * idx);
+});
+console.log(newList);
