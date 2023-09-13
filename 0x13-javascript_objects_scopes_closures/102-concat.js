@@ -1,13 +1,19 @@
 #!/usr/bin/node
-const dict = require('./101-data.js').dict;
-
-const newDict = {};
-
-Object.getOwnPropertyNames(dict).forEach(occurences => {
-  if (newDict[dict[occurences]] === undefined) {
-    newDict[dict[occurences]] = [occurences];
-  } else {
-    newDict[dict[occurences]].push(occurences);
-  }
+const file1 = process.argv[2];
+const file2 = process.argv[3];
+const newfile = process.argv[4];
+const fs = require('fs');
+const data1 = fs.readFileSync(file1, (err, data) => {
+  if (err) throw err;
+  return (data);
 });
-console.log(newDict);
+const data2 = fs.readFileSync(file2, (err, data) => {
+  if (err) throw err;
+  return (data);
+});
+fs.appendFile(newfile, data1, function (err) {
+  if (err) throw err;
+});
+fs.appendFile(newfile, data2, function (err) {
+  if (err) throw err;
+});
